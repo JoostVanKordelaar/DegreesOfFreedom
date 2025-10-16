@@ -1,24 +1,26 @@
 {
-    "id": "E3AC2E8F",
-    "path": "~/GitHub/DegreesOfFreedom/R/hello.R",
-    "project_path": "R/hello.R",
+    "id": "70ABF527",
+    "path": "~/GitHub/DegreesOfFreedom/R/DegreesOfFreedom.R",
+    "project_path": "R/DegreesOfFreedom.R",
     "type": "r_source",
     "hash": "0",
     "contents": "",
     "dirty": false,
-    "created": 1760556618105.0,
+    "created": 1760602384498.0,
     "source_on_save": false,
     "relative_order": 1,
     "properties": {
         "source_window_id": "",
-        "Source": "Source"
+        "Source": "Source",
+        "cursorPosition": "41,39",
+        "scrollLine": "36"
     },
     "folds": "",
-    "lastKnownWriteTime": 1760556608,
+    "lastKnownWriteTime": 1760605221,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1760556608,
+    "last_content_update": 1760605221865,
     "read_only": false,
     "read_only_alternatives": []
 }
