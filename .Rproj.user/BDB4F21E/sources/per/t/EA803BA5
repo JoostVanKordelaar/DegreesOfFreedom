@@ -3,7 +3,7 @@
     "path": "~/GitHub/DegreesOfFreedom/R/DegreesOfFreedom.R",
     "project_path": "R/DegreesOfFreedom.R",
     "type": "r_source",
-    "hash": "0",
+    "hash": "3298089824",
     "contents": "",
     "dirty": false,
     "created": 1761208344138.0,
@@ -12,8 +12,8 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "78,5",
-        "scrollLine": "61"
+        "cursorPosition": "66,16",
+        "scrollLine": "64"
     },
     "folds": "",
     "lastKnownWriteTime": 1761209296,
