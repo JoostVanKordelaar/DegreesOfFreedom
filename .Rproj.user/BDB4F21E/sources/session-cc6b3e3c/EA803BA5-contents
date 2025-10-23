@@ -1,4 +1,17 @@
 
+updateValues <- function(input,statMean){
+  if (input$fixMean){
+    yData <- c(input$n1,input$n2,input$n3,input$n4,input$n5,input$n6)
+    fixedValue <- -sum(yData) + statMean*7
+    yData <- c(yData,fixedValue)
+    meanData <- rep(statMean,7)
+  } else {
+    yData <- c(input$n1,input$n2,input$n3,input$n4,input$n5,input$n6,input$n7)
+    meanData <- rep(mean(yData),7)
+  }
+  values <- list(yData = yData,meanData = meanData)
+  return(values)
+}
 
 #' @export
 dof <- function(){
@@ -12,6 +25,9 @@ dof <- function(){
     shiny::sidebarLayout(
       # Iniate sidebar panel
       shiny::sidebarPanel(
+
+        # Add checkbox to fix mean
+        shiny::checkboxInput("fixMean", "Fix mean:"),
 
         # Add sliders
         #n1
@@ -56,17 +72,28 @@ dof <- function(){
   # Define server logic required to plot the data
   server <- function(input, output) {
 
+    statMean <- bindEvent(
+      reactive({
+        statMean <- mean(c(input$n1,input$n2,input$n3,input$n4,input$n5,input$n6,input$n7))
+      }),input$fixMean
+    )
+
+    values <- reactive({
+      values <- updateValues(input,statMean())
+      return(values)
+    })
+
     output$dataPlot <- shiny::renderPlot({
-      # generate bins based on input$bins from ui.R
-      yData <- c(input$n1,input$n2,input$n3,input$n4,input$n5,input$n6,input$n7)
-      meanData <- rep(mean(yData),7)
+
+      yData <- values()$yData
+      meanData <- values()$meanData
       sliderData <- data.frame(xData = 1:7,yData = yData,meanData = meanData)
 
       # draw the scatter plot with the data points defined by the sliders
       p <- ggplot2::ggplot(data = sliderData) +
         ggplot2::geom_point(mapping = ggplot2::aes(x=xData,y=yData),size = 5) +
         ggplot2::geom_line(mapping = ggplot2::aes(x=xData,y=meanData,colour = "red"),linewidth = 2) +
-        ggplot2::coord_cartesian(xlim = c(0,8),ylim = c(-6,6)) +
+        ggplot2::coord_cartesian(xlim = c(0,8),ylim = c(-10,10)) +
         ggplot2::theme(legend.position="none")
       p
     })
